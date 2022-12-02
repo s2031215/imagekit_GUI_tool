@@ -1,0 +1,205 @@
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin: 0px;
+    /* background-image: url('./img/app-background-png-2.png');*/
+}
+
+/* title */
+
+.css-header {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 0em 0.5em 0em 0.5em;
+    background-color: rgb(11, 27, 54);
+    color: white;
+    font-family: "Sofia", sans-serif;
+}
+
+.css-header h2 {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center
+}
+
+/* for upload box */
+.css-box-icon {
+    width: 5rem;
+    height: 5rem;
+    display: inline-block;
+    line-height: 1em;
+    flex-shrink: 0;
+    color: #2c93fa;
+}
+
+.css-upload-svg {
+    background: #e9f4ff;
+    padding: 1.25rem;
+    border-radius: 9999px;
+}
+
+.css-box-center {
+    padding: 1em 0.5em 1em 0em;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.css-uploadframe {
+    margin: 0.7em 0.7em 0.7em 0.7em;
+    /*
+    border-style: dotted;
+    border-radius: 20px;
+    */
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+    /* https://kovart.github.io/dashed-border-generator/ */
+}
+
+.css-note {
+    font-size: 12px;
+    text-align: center;
+}
+
+.css-box-body {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.css-box-text {
+    font-family: Poppins, sans-serif;
+}
+
+
+/* output table */
+.css-output-table {
+    display: block;
+    height: 250px;
+    width: 400px;
+    overflow-y: scroll;
+    table-layout: fixed;
+    word-break: break-all;
+    padding: 0.25rem;
+    font-size: 0.75em;
+}
+
+/* table scrollbar*/
+.css-output-table::-webkit-scrollbar {
+
+    width: 13px;
+
+}
+
+.css-output-table::-webkit-scrollbar-button {
+
+    background: transparent;
+
+    border-radius: 1px;
+
+}
+
+.css-output-table::-webkit-scrollbar-track-piece {
+
+    background: transparent;
+
+}
+
+.css-output-table::-webkit-scrollbar-thumb {
+
+    border-radius: 4px;
+    border: 1px solid rgb(157 205 255)
+}
+
+.css-output-table::-webkit-scrollbar-track {
+
+    box-shadow: transparent;
+
+}
+
+table,
+th,
+td {
+    border: 1px solid #f3f8ff;
+    border-collapse: collapse;
+
+}
+
+td {
+    padding-inline-start: 0.5rem;
+}
+
+td:first-child,
+th:first-child {
+    width: 100px;
+}
+
+.css-row-th {
+    /* th */
+    background-color: #f3f8ff;
+    font-family: Poppins, sans-serif;
+}
+
+.css-th-col {
+    letter-spacing: 0;
+    text-align: start;
+    padding-inline-start: 0.5rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.25rem;
+    color: #0b1b36;
+}
+
+.css-status-image {
+    /*loading tr image*/
+    width: 25px;
+    padding-top: 0.25rem;
+    padding-inline-start: 0.5rem;
+    padding-inline-end: 0.5rem;
+}
+
+.th-osize {
+    text-align: center;
+    width: 80px;
+}
+
+.th-short {
+    text-align: center;
+    width: 30px;
+}
+
+.link-small {
+    color: rgb(44, 147, 250);
+    font-size: 12px;
+    text-align: left;
+    margin-left: 4px;
+    font-family: Poppins, sans-serif;
+    text-decoration: none;
+}
+
+a.disabled {
+    color: rgb(187, 187, 187) !important;
+}
+
+#block_container {
+    display: flex;
+}
+
+#block_left {
+    width: 50%;
+}
+
+#block_right {
+    width: 50%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+#termsCheck {
+    margin: 4px 3px 3px 3px;
+}

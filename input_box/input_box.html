@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdnjs.cloudflare.com;
+                                                      script-src 'self' 'unsafe-inline' ;">
+  <title>API Key Setting</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <form id="form">
+      <h3>API Key Setting</h3>
+      <input type="text" id="pubkey" name="pubkey" placeholder="publicKey">
+      <input type="text" id="prikey" name="prikey" placeholder="privateKey">
+      <input type="text" id="url" name="url" placeholder="urlEndpoint">
+      <a class='link-small' href="https://imagekit.io/dashboard/developer/api-keys" target="_blank">Get API keys</a>
+      <input type="button" id="Submit" value="Submit">
+    </form>
+  </div>
+  <script>
+    const { ipcRenderer } = require('electron');
+
+    const button = document.getElementById('Submit')
+    button.addEventListener('click', setapi);
+
+    function setapi() {
+      const formData = new FormData(document.getElementById('form'));
+      let pubkey = formData.get('pubkey');
+      let prikey = formData.get('prikey');
+      let url = formData.get('url');
+      //console.log({ pubkey, prikey, url });
+      button.disabled = true
+      button.value = "loading..."
+      ipcRenderer.invoke('set-apikey', { pubkey, prikey, url })
+        .then(msg => {
+          console.log(msg)
+        }).catch(function(error){
+          alert(error)
+        }).then(() =>{
+          button.disabled = false
+          button.value = "Submit"
+        });
+    }
+
+    var config = ipcRenderer.sendSync('get-apikey-config', '')
+    if (config.publicKey == 'public_XXXXXXXXXXXXX') {
+      document.getElementById("pubkey").placeholder = config.publicKey;
+      document.getElementById("prikey").placeholder = config.privateKey;
+      document.getElementById("url").placeholder = config.urlEndpoint;
+    } else {
+      document.getElementById("pubkey").value = config.publicKey;
+      document.getElementById("prikey").value = config.privateKey;
+      document.getElementById("url").value = config.urlEndpoint;
+    }
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+{
+  "name": "imagekit_tool",
+  "version": "v1.6.2",
+  "main": "main.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "set ELECTRON_IS_DEV=0 && electron .",
+    "test": "node main.js",
+    "image": "node image.js",
+    "package": "electron-packager ./ imagekit.app --out ./OutApp --app-version 1.6.2 --overwrite --icon=./img/ico/icon.ico --ignore=\"(config*|setenv.txt|downloads|example|build$)\"",
+    "dist": "electron-builder --win=portable"
+  },
+  "author": "s2031215",
+  "license": "ISC",
+  "description": "A Third Party Tool for imagekit.io API, provides an easy-to-use interface for API in window user",
+  "dependencies": {
+    "imagekit": "^4.1.1",
+    "nodejs-file-downloader": "^4.10.2"
+  },
+  "devDependencies": {
+    "electron": "^21.2.3",
+    "electron-builder": "^23.6.0",
+    "electron-packager": "^17.1.1"
+  },
+  "build": {
+    "appId": "com.s2031215.imagekit.tool",
+    "productName": "imagekit_GUI_tool",
+    "files": [
+      "!config.json",
+      "!config.json_a",
+      "!setenv.txt",
+      "!downloads",
+      "!example",
+      "!OutApp"
+    ],
+    "directories": {
+      "output": "build/win"
+    },
+    "win": {
+      "target": [
+        "portable"
+      ],
+      "icon": "./img/ico/icon.ico"
+    }
+  }
+}

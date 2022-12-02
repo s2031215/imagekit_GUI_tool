@@ -1,0 +1,129 @@
+<!--index.html-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src *; script-src * 'unsafe-inline';img-src 'self' data:;">
+    <title>imagekit.io Image Optimization</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+</head>
+
+<body>
+    <div class="css-header">
+        <h2>imagekit.io Image Optimization</h2>
+    </div>
+
+    <div id="uploadbox">
+        <div class="css-uploadframe" id="btn_upload">
+            <div class="css-box-center">
+                <div class="css-box-body">
+                    <div class="css-upload-svg"><svg stroke="currentColor" fill="currentColor" stroke-width="0"
+                            viewBox="0 0 24 24" focusable="false" class="css-box-icon" height="1em" width="1em"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g>
+                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                <path
+                                    d="M12.414 5H21a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h7.414l2 2z">
+                                </path>
+                            </g>
+                        </svg></div>
+                    <div class="css-box-text">
+                        <p><b>Drop JPG/PNG Files here</b></p>
+                        <div class="css-note"> Output Folder
+                            <b>.\downloads</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table role="table" class="css-output-table">
+        <thead class="css-row-th">
+            <tr role="row" class="css-0">
+                <th colspan="1" role="columnheader" class="css-th-col">File Name</th>
+                <th colspan="1" role="columnheader" class="css-th-col ">Before</th>
+                <th colspan="1" role="columnheader" class="css-th-col th-osize">After</th>
+                <th colspan="1" role="columnheader" class="css-th-col th-short">Time</th>
+                <th colspan="1" role="columnheader" class="css-th-col th-short">URL</th>
+                <th colspan="1" role="columnheader" class="css-status-image">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody role="rowgroup" class="css-0">
+        </tbody>
+    </table>
+    <footer>
+        <div id="block_container">
+            <div id="block_left">
+                <a class="link-small" href="javascript:void(0);" onclick="callsetting();">Setting</a>
+                <a class="link-small" href="javascript:void(0);" onclick="cleartable();">Clear</a>
+                <a class="link-small" href="javascript:void(0);" onclick="clearCache();">Purge Cache</a>
+            </div>
+            <div id="block_right">
+                <a id="cloudcheck" class="link-small disabled" href="javascript:void(0);" onclick="">Keep in Cloud</a>
+                <input id="termsCheck" type="checkbox" name="terms" />
+            </div>
+        </div>
+    </footer>
+    <!-- You can also require other files to run in this process   -->
+    <script>
+        const { ipcRenderer } = require('electron');
+
+        const element = document.getElementById("btn_upload");
+        element.addEventListener("click", click_upload);
+        function click_upload() {
+            ipcRenderer.send('click-upload-window', "");
+        }
+
+        function callsetting() {
+            ipcRenderer.send('click-open-setting', "");
+        }
+
+        function clearCache() {
+            ipcRenderer.invoke('clear-cache', "")
+                .then(msg => {
+                    if (msg.requestId != null) {
+                        alert("Clear success, Ref id:" + msg.requestId)
+                    } else {
+                        alert("Fail:" + msg.message)
+                    }
+                }).catch(function (error) {
+                    alert(error)
+                });
+        }
+
+        function cleartable() {
+            var table = document.getElementsByClassName("css-output-table")[0].getElementsByTagName('tbody')[0]
+            let removelist = [];
+            table.querySelectorAll("tr").forEach(row => {
+                let td = row.querySelector("td.css-status-image")
+                if (row.rowIndex, td.childNodes[0].src.includes("ok-128.png")) {
+                    removelist.push(row.rowIndex)
+                }
+            });
+            console.log(removelist)
+            while (removelist.length != 0) {
+                let row_id = removelist.pop()
+                table.deleteRow(row_id - 1)
+            }
+        }
+
+        const checkbox = document.getElementById("termsCheck");
+        const cloudsave = document.getElementById("cloudcheck");
+        checkbox.addEventListener('change', function () {
+            if (this.checked) {
+                cloudsave.classList.remove("disabled");
+                ipcRenderer.send('set-savecloud', true);
+            } else {
+                cloudsave.classList.add("disabled");
+                ipcRenderer.send('set-savecloud', false);
+            }
+        });
+    </script>
+</body>
+
+</html>
