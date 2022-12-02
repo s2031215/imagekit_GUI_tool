@@ -29,6 +29,20 @@ npm run package #normal package
 npm run dist #portable package
 ```
 
+## Dependencies
+
+* Node.js: v16.17.1
+
+* imagekit: ^4.1.1
+
+* nodejs-file-downloader: ^4.10.2
+
+* electron: ^21.2.3
+
+* electron-builder: ^23.6.0
+
+* electron-packager: ^17.1.1
+
 ## Author
 
 👤 **s2031215**
