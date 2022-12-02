@@ -1,18 +1,18 @@
 # Welcome to imagekit_tool 👋
-![Version](https://img.shields.io/badge/version-v1.6.1-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/badge/version-v1.0.0-blue.svg?cacheSeconds=2592000)
 [![License: ISC](https://img.shields.io/badge/License-ISC-yellow.svg)](#)
 
 > A Third Party Tool for imagekit.io , provides an easy-to-use interface for imagekit.io API in window desktop
 
 ## Usage
 
-download the exe and run 
+Download the exe from https://github.com/s2031215/imagekit_GUI_tool/releases
 
 or
 
 ```sh
-git clone XXXX
-cd XXX
+git clone https://github.com/s2031215/imagekit_GUI_tool.git
+cd imagekit_GUI_tool
 npm install
 npm run start #dev mode
 ```
