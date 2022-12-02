@@ -1,13 +1,13 @@
 {
   "name": "imagekit_tool",
-  "version": "v1.6.2",
+  "version": "v1.0.0",
   "main": "main.js",
   "type": "commonjs",
   "scripts": {
     "start": "set ELECTRON_IS_DEV=0 && electron .",
     "test": "node main.js",
     "image": "node image.js",
-    "package": "electron-packager ./ imagekit.app --out ./OutApp --app-version 1.6.2 --overwrite --icon=./img/ico/icon.ico --ignore=\"(config*|setenv.txt|downloads|example|build$)\"",
+    "package": "electron-packager ./ imagekit.app --out ./OutApp --app-version 1.0.0 --overwrite --icon=./img/ico/icon.ico --ignore=\"(config*|setenv.txt|downloads|example|build$)\"",
     "dist": "electron-builder --win=portable"
   },
   "author": "s2031215",
