@@ -7,7 +7,7 @@
 
 ## ScreenShot
 
-![alt text](.\Screenshot_1.png)
+![alt text](https://github.com/s2031215/imagekit_GUI_tool/blob/main/Screenshot_1.png)
 
 ## Usage
 
