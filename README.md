@@ -4,7 +4,7 @@
 [![License: ISC](https://img.shields.io/badge/License-ISC-yellow.svg)](#)
 ![node.js](https://img.shields.io/badge/node.js-v16.17.1-green?style=flat)
 ![electron](https://img.shields.io/badge/electron-21.2.3-green?style=flat)
-![visitors](https://visitor-badge.deta.dev/badge?page_id=s2031215.imagekit_GUI_tool)
+![visitor badge](https://visitor-badge.laobi.icu/badge?page_id=s2031215.imagekit_GUI_tool)
 
 > A Third Party Tool for imagekit.io , provides an easy-to-use interface for imagekit.io API in window desktop
 
